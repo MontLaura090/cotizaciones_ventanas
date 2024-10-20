@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lilita+One&display=swap');
+
+/* Estilo base */
+body {
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    background-color: #f0f0f0;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenedor */
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    text-align: center; /* Centra el texto dentro del contenedor */
+}
+
+/* Encabezados */
+h1, h2, h3 {
+    font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #2f6a75;
+}
+
+/* Estilo de los formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos del formulario */
+}
+
+/* Estilo de los inputs y selects */
+input, select {
+    width: 30%; /* Ancho de los cuadros de entrada */
+    max-width: 300px; /* Ancho máximo */
+    padding: 10px;
+    margin: 2px 0; /* Espaciado entre elementos */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Estilo de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+}
+
+th {
+    background-color: #005f73;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+/* Botones */
+a {
+    text-decoration: none;
+    background-color: #0a9396;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+a:hover {
+    background-color: #94d2bd;
+}
+
+/* Centrado de botones */
+button {
+    background-color: #0a9396;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px; /* Espaciado superior */
+}
+
+button:hover {
+    background-color: #94d2bd;
+}

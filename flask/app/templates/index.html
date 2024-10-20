@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Venta de Ventanas</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Venta de Ventanas</h1>
+
+        <form action="{{ url_for('cotizar') }}" method="POST">
+            <h2>Información del Cliente</h2>
+            <label>Nombre:</label>
+            <input type="text" name="nombre" required><br>
+            
+            <label>Cédula:</label>
+            <input type="text" name="cedula" required><br>
+            
+            <label>Dirección:</label>
+            <input type="text" name="direccion" required><br>
+
+            <h2>Detalles de Ventanas</h2>
+            <label>Cantidad de ventanas:</label>
+            <input type="number" name="cantidad_ventanas" id="cantidad_ventanas" value="0" min="0" required><br><br>
+
+            <div id="ventanas" style="display: none;"></div> <!-- Ocultar inicialmente -->
+
+            <button type="submit">Generar Cotización</button>
+        </form>
+    </div>
+
+    <script>
+        // Script para generar dinámicamente los campos de las ventanas
+        const cantidadVentanasInput = document.getElementById('cantidad_ventanas');
+        const ventanasDiv = document.getElementById('ventanas');
+
+        function generarCamposVentanas() {
+            const cantidad = parseInt(cantidadVentanasInput.value);
+            if (cantidad > 0) {
+                ventanasDiv.style.display = 'block'; // Mostrar div si hay ventanas
+                ventanasDiv.innerHTML = '';
+                for (let i = 0; i < cantidad; i++) {
+                    ventanasDiv.innerHTML += `
+                        <h3>Ventana ${i + 1}</h3>
+                        <label>Alto (cm):</label>
+                        <input type="number" name="alto_${i}" required><br>
+
+                        <label>Ancho (cm):</label>
+                        <input type="number" name="ancho_${i}" required><br>
+
+                        <label>Estilo:</label>
+                        <select name="estilo_${i}" required>
+                            <option value=""></option>
+                            <option value="O">O</option>
+                            <option value="XO">XO</option>
+                            <option value="OXO">OXO</option>
+                            <option value="OXXO">OXXO</option>
+                        </select><br>
+
+                        <label>Acabado:</label>
+                        <select name="acabado_${i}" required>
+                            <option value=""></option>
+                            <option value="pulido">Pulido</option>
+                            <option value="lacado_brillante">Lacado Brillante</option>
+                            <option value="lacado_mate">Lacado Mate</option>
+                            <option value="anodizado">Anodizado</option>
+                        </select><br>
+
+                        <label>Vidrio:</label>
+                        <select name="vidrio_${i}" required>
+                            <option value=""></option>
+                            <option value="transparente">Transparente</option>
+                            <option value="bronce">Bronce</option>
+                            <option value="azul">Azul</option>
+                        </select><br>
+
+                        <label>¿Esmerilado?:</label>
+                        <select name="esmerilado_${i}">
+                            <option value="no">No</option>
+                            <option value="sí">Sí</option>
+                        </select><br><br>
+                    `;
+                }
+            } else {
+                ventanasDiv.style.display = 'none'; // Ocultar div si no hay ventanas
+            }
+        }
+
+        cantidadVentanasInput.addEventListener('change', generarCamposVentanas);
+        window.onload = generarCamposVentanas;
+    </script>
+</body>
+</html>

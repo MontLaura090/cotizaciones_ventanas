@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cotización</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Cotización</h1>
+        <h2>Cliente: {{ cliente.nombre }}</h2>
+        <p>Cédula: {{ cliente.cedula }}</p>
+        <p>Dirección: {{ cliente.direccion }}</p>
+
+        <h2>Detalle de las Ventanas</h2>
+
+        <!-- Tabla de cotización -->
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Estilo</th>
+                    <th>Alto (cm)</th>
+                    <th>Ancho (cm)</th>
+                    <th>Precio ($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ventana in ventanas %}
+                <tr>
+                    <td>{{ loop.index }}</td>  <!-- Usar loop.index para obtener el índice -->
+                    <td>{{ ventana.estilo }}</td>
+                    <td>{{ ventana.alto }}</td>
+                    <td>{{ ventana.ancho }}</td>
+                    <td>{{ ventana.calcular_precio() }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5">No hay ventanas para mostrar.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h3>Total: ${{ total }}</h3>
+        <p>¡Gracias por su compra!</p>
+
+        <a href="{{ url_for('index') }}">Volver al inicio</a>
+    </div>
+</body>
+</html>
