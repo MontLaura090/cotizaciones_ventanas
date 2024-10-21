@@ -9,7 +9,7 @@ class Cotizacion:
     def calcular_total(self):
         total = 0
         for ventana in self.ventanas:
-            total += ventana.calcular_precio()  # Suponiendo que la clase Ventana tiene un método calcular_precio()
+            total += ventana.calcular_precio()  
         return total
 
     def mostrar_cotizacion(self):
